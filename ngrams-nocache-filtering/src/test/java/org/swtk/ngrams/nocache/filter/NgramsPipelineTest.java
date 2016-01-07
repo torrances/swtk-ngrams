@@ -16,7 +16,7 @@ public final class NgramsPipelineTest {
 	@Test
 	public void mustNotHaveOneStopword() throws Throwable {
 
-		Ngrams ngrams = new NgramsPipeline(ngrams(), LanguageTag.ENGLISH)
+		Ngrams ngrams = new NgramsPipeline(ngrams())
 
 		.filter(LogicalOperator.MUST_NOT_HAVE_ONE, GramClassification.STOPWORD).ngrams();
 
@@ -33,7 +33,7 @@ public final class NgramsPipelineTest {
 	@Test
 	public void mustNotHaveOneStopwordOrPunctuation() throws Throwable {
 
-		Ngrams ngrams = new NgramsPipeline(ngrams(), LanguageTag.ENGLISH)
+		Ngrams ngrams = new NgramsPipeline(ngrams())
 
 		.filter(LogicalOperator.MUST_NOT_HAVE_ONE, GramClassification.STOPWORD)
 
@@ -49,7 +49,7 @@ public final class NgramsPipelineTest {
 	}
 
 	private Ngrams ngrams() throws Throwable {
-		Ngrams ngrams = new Ngrams();
+		Ngrams ngrams = new Ngrams(LanguageTag.ENGLISH);
 
 		ngrams.add(NgramAdapter.transform("the", "quick", "brown"));
 		ngrams.add(NgramAdapter.transform("quick", "brown", "fox"));

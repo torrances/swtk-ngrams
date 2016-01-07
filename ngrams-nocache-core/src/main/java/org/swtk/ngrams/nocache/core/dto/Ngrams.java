@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.swtk.common.framework.type.LanguageTag;
+
 public class Ngrams {
 
+	private LanguageTag languageTag;
+
 	private Collection<Ngram> list;
+
+	public Ngrams(LanguageTag languageTag) {
+		setLanguageTag(languageTag);
+	}
 
 	public void add(Ngram... ngrams) {
 		for (Ngram ngram : ngrams)
@@ -15,6 +23,10 @@ public class Ngrams {
 
 	public void add(Ngrams ngrams) {
 		getList().addAll(ngrams.getList());
+	}
+
+	public LanguageTag getLanguageTag() {
+		return languageTag;
 	}
 
 	private Collection<Ngram> getList() {
@@ -28,6 +40,10 @@ public class Ngrams {
 
 	public Iterator<Ngram> iterator() {
 		return getList().iterator();
+	}
+
+	private void setLanguageTag(LanguageTag languageTag) {
+		this.languageTag = languageTag;
 	}
 
 	private void setList(Collection<Ngram> list) {

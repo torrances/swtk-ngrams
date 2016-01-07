@@ -16,7 +16,7 @@ public final class MustNotHaveOnePunctuation {
 	public static LogManager logger = new LogManager(MustNotHaveOnePunctuation.class);
 
 	public static Ngrams filter(Ngrams ngrams, LanguageTag languageTag) throws BusinessException {
-		Ngrams _filtered = new Ngrams();
+		Ngrams _filtered = new Ngrams(languageTag);
 
 		Iterator<Ngram> iter = ngrams.iterator();
 		while (iter.hasNext()) {

@@ -3,7 +3,7 @@ package org.swtk.ngrams.core;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class CommonsIocContainer {
+public class NgramsIocContainer {
 
 	static ApplicationContext _applicationContext;
 

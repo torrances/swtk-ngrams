@@ -17,9 +17,9 @@ public class NgramsPipeline {
 
 	private Ngrams original = null;
 
-	public NgramsPipeline(Ngrams ngrams, LanguageTag languageTag) {
+	public NgramsPipeline(Ngrams ngrams) {
 		this.original = ngrams;
-		this.languageTag = languageTag;
+		this.languageTag = ngrams.getLanguageTag();
 	}
 
 	public NgramsPipeline filter(LogicalOperator logicalOperator, GramClassification gramClassification) throws BusinessException {

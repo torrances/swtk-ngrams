@@ -3,7 +3,9 @@ package org.swtk.ngrams.nocache.parse;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.swtk.common.framework.type.LanguageTag;
 import org.swtk.eng.tokenizer.text.TextTokenizer;
+import org.swtk.ngrams.core.NgramsIocContainer;
 import org.swtk.ngrams.nocache.core.dto.Ngrams;
 import org.swtk.ngrams.nocache.core.type.GramLevel;
 import org.swtk.ngrams.nocache.parse.dmo.ChunkParser;
@@ -14,7 +16,7 @@ public final class ChunkParserTest {
 	public void bigrams() throws Throwable {
 		String input = "The quick brown fox jumped over the lazy dog today.";
 		String[] tokens = new TextTokenizer(input).tokenize().array();
-		Ngrams ngrams = new ChunkParser().parse(tokens, GramLevel.BIGRAM);
+		Ngrams ngrams = getBean().parse(tokens, GramLevel.BIGRAM, LanguageTag.ENGLISH);
 
 		/*
 		 * 	The quick
@@ -31,11 +33,15 @@ public final class ChunkParserTest {
 		assertEquals(10, ngrams.size());
 	}
 
+	private ChunkParser getBean() {
+		return (ChunkParser) NgramsIocContainer.getContext().getBean(ChunkParser.class);
+	}
+
 	@Test
 	public void trigrams() throws Throwable {
 		String input = "The quick brown fox jumped over the lazy dog today.";
 		String[] tokens = new TextTokenizer(input).tokenize().array();
-		Ngrams ngrams = new ChunkParser().parse(tokens, GramLevel.TRIGRAM);
+		Ngrams ngrams = getBean().parse(tokens, GramLevel.TRIGRAM, LanguageTag.ENGLISH);
 
 		/*
 		 * 	The quick brown
@@ -50,12 +56,12 @@ public final class ChunkParserTest {
 		 */
 		assertEquals(9, ngrams.size());
 	}
-
+	
 	@Test
 	public void unigrams() throws Throwable {
 		String input = "The quick brown fox jumped over the lazy dog today.";
 		String[] tokens = new TextTokenizer(input).tokenize().array();
-		Ngrams ngrams = new ChunkParser().parse(tokens, GramLevel.UNIGRAM);
+		Ngrams ngrams = getBean().parse(tokens, GramLevel.UNIGRAM, LanguageTag.ENGLISH);
 
 		/*
 		 * 	The
