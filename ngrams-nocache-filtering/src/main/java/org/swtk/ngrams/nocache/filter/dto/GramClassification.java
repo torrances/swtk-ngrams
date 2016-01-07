@@ -2,5 +2,5 @@ package org.swtk.ngrams.nocache.filter.dto;
 
 public enum GramClassification {
 
-	WIKTIONARY, GNGRAM, WORDNET, STOPWORD;
+	GNGRAM, PUNCTUATION, STOPWORD, WIKTIONARY, WORDNET;
 }
