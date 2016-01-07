@@ -1,0 +1,19 @@
+6-Jan-2015	I envision having multiple projects for each backing technology
+			ngrams-mysql-*
+			ngrams-hbase-*
+			ngrams-redis-*
+			etc
+
+			there should also be hte ability to pipeline projects
+			for example:
+				ngrams-redis-* => ngrams-hbase-*
+			so that n-grams created with the aid of a redis cache
+				can be stored within hbase, as an example
+
+			common code should be promoted and reused where possible
+			however, the idea is to avoid all forms of tight-coupling
+			and to maintain multiple ways and technologies for n-gram creation
+
+			should also emphasize the ability to filter everything 6 ways from sunday
+			using pipeline design patterns and mda-dictionaries built in the data project 
+			and existing in the commons project ...
